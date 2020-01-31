@@ -22,9 +22,22 @@ public class Destroyable : MonoBehaviour
         intact.gameObject.SetActive(false);
         destroyed.gameObject.SetActive(true);
         print("destroyed set active");
-        foreach(Rigidbody body in destroyed.GetComponentsInChildren<Rigidbody>())
+
+        foreach(Fragment fragment in destroyed.GetComponentsInChildren<Fragment>())
         {
-            body.AddForce(direction * 10, ForceMode.Impulse);
+            fragment.Shatter(direction);
+        }
+    }
+
+    public void Repair()
+    {
+        if(destroyed.gameObject.activeSelf)
+        {
+            Debug.Log("Repairing " + gameObject.name);
+            foreach (Fragment fragment in destroyed.GetComponentsInChildren<Fragment>())
+            {
+                fragment.Repair();
+            }
         }
     }
 }
