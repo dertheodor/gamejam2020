@@ -26,10 +26,10 @@ public class Destroyable : MonoBehaviour
             intact.gameObject.SetActive(false);
             destroyed.gameObject.SetActive(true);
             print("destroyed set active");
-
             foreach (Fragment fragment in destroyed.GetComponentsInChildren<Fragment>())
             {
-                fragment.Shatter(direction);
+                Vector3 offset = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
+                fragment.Shatter(direction + offset);
             }
             isDestroyed = true;
         }
