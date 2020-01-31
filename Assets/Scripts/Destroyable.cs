@@ -7,6 +7,8 @@ public class Destroyable : MonoBehaviour
     Transform intact;
     Transform destroyed;
 
+    bool isDestroyed = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,25 +21,30 @@ public class Destroyable : MonoBehaviour
 
     public void Shatter(Vector3 direction)
     {
-        intact.gameObject.SetActive(false);
-        destroyed.gameObject.SetActive(true);
-        print("destroyed set active");
-
-        foreach(Fragment fragment in destroyed.GetComponentsInChildren<Fragment>())
+        if(!isDestroyed)
         {
-            fragment.Shatter(direction);
+            intact.gameObject.SetActive(false);
+            destroyed.gameObject.SetActive(true);
+            print("destroyed set active");
+
+            foreach (Fragment fragment in destroyed.GetComponentsInChildren<Fragment>())
+            {
+                fragment.Shatter(direction);
+            }
+            isDestroyed = true;
         }
     }
 
     public void Repair()
     {
-        if(destroyed.gameObject.activeSelf)
+        if(isDestroyed)
         {
             Debug.Log("Repairing " + gameObject.name);
             foreach (Fragment fragment in destroyed.GetComponentsInChildren<Fragment>())
             {
                 fragment.Repair();
             }
+            isDestroyed = false;
         }
     }
 }
