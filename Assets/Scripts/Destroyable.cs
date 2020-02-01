@@ -33,7 +33,7 @@ public class Destroyable : MonoBehaviour
         {
             intact.gameObject.SetActive(false);
             destroyed.gameObject.SetActive(true);
-            print("destroyed set active");
+            print("destroyed set active for " + name);
             foreach (Fragment fragment in destroyed.GetComponentsInChildren<Fragment>())
             {
                 Vector3 offset = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
