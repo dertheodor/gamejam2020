@@ -7,6 +7,7 @@ public class DieDingerWerdenWegGeboxt : MonoBehaviour
 
 void OnTriggerEnter (Collider other)
     {
+        print("Hit " + other.name);
         float rnd = Random.Range(0.2f, 0.8f);
         Vector3 shatterObjectPosition = other.transform.position;
         Vector3 relativePosition = shatterObjectPosition - transform.position;

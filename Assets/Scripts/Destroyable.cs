@@ -7,15 +7,23 @@ public class Destroyable : MonoBehaviour
     Transform intact;
     Transform destroyed;
 
+    public float fickung = 1.0f;
+
     bool isDestroyed = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        Transform[] children = GetComponentsInChildren<Transform>();
-        print(children.Length);
-        intact = children[1];
-        destroyed = children[2];
+        foreach (Transform child in transform)
+        {
+            if(!intact)
+            {
+                intact = child;
+            } else
+            {
+                destroyed = child;
+            }
+        }
         destroyed.gameObject.SetActive(false);
     }
 
@@ -29,7 +37,7 @@ public class Destroyable : MonoBehaviour
             foreach (Fragment fragment in destroyed.GetComponentsInChildren<Fragment>())
             {
                 Vector3 offset = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
-                fragment.Shatter(direction + offset);
+                fragment.Shatter((direction + offset) * fickung);
             }
             isDestroyed = true;
         }
