@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fragment : MonoBehaviour
 {
-    float recordTime = 1.0f;
+    float recordTime = 1.5f;
     bool isShattering = false;
     bool isRepairing = false;
     int repairIndex = 0;
