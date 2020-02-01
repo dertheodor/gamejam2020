@@ -105,6 +105,14 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean BuildTheGunAction
+        {
+            get
+            {
+                return SteamVR_Actions.default_BuildTheGunAction;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get
