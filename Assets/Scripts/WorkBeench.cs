@@ -6,7 +6,7 @@ using Valve.VR.InteractionSystem;
 
 public class WorkBeench : MonoBehaviour
 {
-    public GameObject checkmark; // our checkmark prefab
+    public GameObject Checkmark; // our checkmark prefab
 
     public bool clockWasFound;
     public bool sodaWasFound;
@@ -52,32 +52,32 @@ public class WorkBeench : MonoBehaviour
 
         if (clockWasFound)
         {
-            GameObject checkmark = Instantiate(checkmark, checkmark.position);
-            checkmark.transform.position + new Vector3(17.854f, 0, 1.511f);
+            GameObject checkmark = Instantiate(Checkmark, Checkmark.transform);
+            checkmark.transform.position += new Vector3(17.854f, 0, 1.511f);
         }
 
         if (sodaWasFound)
         {
-            GameObject checkmark = Instantiate(checkmark, checkmark.position);
-            checkmark.transform.position + new Vector3(18.3446f, 0, 1.3818f);
+            GameObject checkmark = Instantiate(Checkmark, Checkmark.transform);
+            checkmark.transform.position += new Vector3(18.3446f, 0, 1.3818f);
         }
 
         if (erlenmeyerWasFound)
         {
-            GameObject checkmark = Instantiate(checkmark, checkmark.position);
-            checkmark.transform.position + new Vector3(18.0409f, 0, 1.4707f);
+            GameObject checkmark = Instantiate(Checkmark, Checkmark.transform);
+            checkmark.transform.position += new Vector3(18.0409f, 0, 1.4707f);
         }
 
         if (doorHandleWasFound)
         {
-            GameObject checkmark = Instantiate(checkmark, checkmark.position);
-            checkmark.transform.position + new Vector3(17.7911f, 0, 1.0704f);
+            GameObject checkmark = Instantiate(Checkmark, Checkmark.transform);
+            checkmark.transform.position += new Vector3(17.7911f, 0, 1.0704f);
         }
 
         if (pipeWasFound)
         {
-            GameObject checkmark = Instantiate(checkmark, checkmark.position);
-            checkmark.transform.position + new Vector3(17.8435f, 0, 1.3742f);
+            GameObject checkmark = Instantiate(Checkmark, Checkmark.transform);
+            checkmark.transform.position += new Vector3(17.8435f, 0, 1.3742f);
         }
         /*
         if (prismWasFound)
@@ -106,7 +106,7 @@ public class WorkBeench : MonoBehaviour
         }
     }
 
-    void spawnGun()
+    void SpawnGun()
     {
 
     }
