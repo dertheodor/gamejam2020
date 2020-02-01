@@ -95,12 +95,19 @@ public class WorkBeench : MonoBehaviour
         if (cableWasFound)
         {
             GameObject checkmark = Instantiate(checkmark, checkmark.position);
-            checkmark.transform.position + new Vector3(18.312f, 0, 1.376f);
+            checkmark.transform.position + new Vector3(18.3484f, 0, 1.391f);
         }
         */
-        if (alreadyBuilt)
+        if (clockWasFound && sodaWasFound && erlenmeyerWasFound && doorHandleWasFound && pipeWasFound)
         {
-
+            alreadyBuilt = true;
+            SpawnGun();
+            
         }
+    }
+
+    void spawnGun()
+    {
+
     }
 }
