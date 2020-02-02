@@ -30,6 +30,26 @@ public class Destroyable : MonoBehaviour
         destroyed.gameObject.SetActive(false);
     }
 
+    public void CheckIfRepaired()
+    {
+        bool isRepaired = true;
+        foreach(Fragment f in GetComponentsInChildren<Fragment>())
+        {
+            if (!f.IsRepaired()) isRepaired = false;
+        }
+        if(isRepaired)
+        {
+            destroyed.gameObject.SetActive(false);
+            intact.gameObject.SetActive(true);
+            isDestroyed = false;
+
+            foreach (Fragment f in GetComponentsInChildren<Fragment>())
+            {
+                f.GetComponent<Rigidbody>().isKinematic = false;
+            }
+        }
+    }
+
     public void Shatter(Vector3 direction)
     {
         if (!isDestroyed)

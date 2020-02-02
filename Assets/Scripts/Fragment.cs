@@ -8,6 +8,7 @@ public class Fragment : MonoBehaviour
     bool isShattering = false;
     bool isRepairing = false;
     int repairIndex = 0;
+    bool isRepaired = true;
 
     List<Vector3> positions = new List<Vector3>();
     List<Quaternion> rotations = new List<Quaternion>();
@@ -36,27 +37,47 @@ public class Fragment : MonoBehaviour
         if(isRepairing)
         {
             repairIndex--;
-            transform.position = positions[repairIndex];
-            transform.rotation = rotations[repairIndex];
-            if(repairIndex == 0)
+            if (repairIndex < 0)
             {
                 isRepairing = false;
-            }
+                recordTime = 1.5f;
+                positions = new List<Vector3>();
+                rotations = new List<Quaternion>();
 
+                isRepaired = true;
+                GetComponentInParent<Destroyable>().CheckIfRepaired();
+            } else
+            {
+                print(repairIndex);
+                transform.position = positions[repairIndex];
+                transform.rotation = rotations[repairIndex];
+            }
         }
     }
 
     public void Shatter(Vector3 direction)
     {
+        print(direction);
+        print(GetComponent<Rigidbody>().isKinematic);
+        GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().AddForce(direction * 10, ForceMode.Impulse);
         isShattering = true;
+        isRepaired = false;
     }
 
     public void Repair()
     {
-        GetComponent<Rigidbody>().isKinematic = true;
-        isShattering = false;
-        isRepairing = true;
-        repairIndex = positions.Count;
+        if(!isRepaired)
+        {
+            GetComponent<Rigidbody>().isKinematic = true;
+            isShattering = false;
+            isRepairing = true;
+            repairIndex = positions.Count;
+        }
+    }
+
+    public bool IsRepaired()
+    {
+        return isRepaired;
     }
 }
