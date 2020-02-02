@@ -23,7 +23,13 @@ public class Projectile : MonoBehaviour
         if(!other.CompareTag("Gun"))
         {
             Debug.Log("Hit " + other.name);
+            Fragment d = other.GetComponentInParent<Fragment>();
+            if(d)
+            {
+                d.Repair();
+            }
             GameObject o = Instantiate(explosion, transform.position, Quaternion.identity);
+            gameObject.SetActive(false);
             Destroy(o, 2);
         }
     }

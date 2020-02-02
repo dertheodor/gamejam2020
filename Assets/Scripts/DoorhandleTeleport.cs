@@ -24,7 +24,6 @@ public class DoorhandleTeleport : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(attached);
         attached = ayayay.attachedToHand;
         if(attached && canTeleport)
         {
