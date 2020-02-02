@@ -51,7 +51,7 @@ public class WorkBeench : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Checkmark.transform.position -= new Vector3(-Checkmark.transform.position.x, 0, -Checkmark.transform.position.z);
+        //Checkmark.transform.position -= new Vector3(-Checkmark.transform.position.x, 0, -Checkmark.transform.position.z);
 
         clockWasFound = false;
         clockAlreadyBuilt = false;
