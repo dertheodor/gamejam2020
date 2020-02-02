@@ -11,9 +11,12 @@ public class Destroyable : MonoBehaviour
 
     bool isDestroyed = false;
 
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         foreach (Transform child in transform)
         {
             if(!intact)
@@ -29,8 +32,9 @@ public class Destroyable : MonoBehaviour
 
     public void Shatter(Vector3 direction)
     {
-        if(!isDestroyed)
+        if (!isDestroyed)
         {
+            audioSource.Play();
             intact.gameObject.SetActive(false);
             destroyed.gameObject.SetActive(true);
             print("destroyed set active for " + name);
