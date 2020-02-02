@@ -1,30 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class DoorhandleTeleport : MonoBehaviour
 {
-    public Transform vaseRoom1;
-    public Transform kitchenRoom2;
-    public Transform workBenchRoom3;
+    public Transform boiPlayer;
+
+    private Hand attached;
+
+    public Interactable ayayay;
+
+    public bool canTeleport;
 
     public float teleportOffset;
     // Start is called before the first frame update
     void Start()
     {
-        
+        ayayay = GetComponent<Interactable>();
+        boiPlayer = GameObject.Find("BoiPlayer").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        print(attached);
+        attached = ayayay.attachedToHand;
+        if(attached && canTeleport)
+        {
+            TeleportPlayer();
+            canTeleport = false;
+        }
+        if(!attached)
+        {
+            canTeleport = true;
+        }
     }
 
     void TeleportPlayer()
     {
-        vaseRoom1.transform.position = new Vector3(vaseRoom1.transform.position.x + teleportOffset, vaseRoom1.transform.position.y, vaseRoom1.transform.position.z);
-        kitchenRoom2.transform.position = new Vector3(kitchenRoom2.transform.position.x + teleportOffset, kitchenRoom2.transform.position.y, kitchenRoom2.transform.position.z);
-        workBenchRoom3.transform.position = new Vector3(workBenchRoom3.transform.position.x + teleportOffset, workBenchRoom3.transform.position.y, workBenchRoom3.transform.position.z);
+        boiPlayer.transform.position = new Vector3(boiPlayer.transform.position.x + teleportOffset, boiPlayer.transform.position.y, boiPlayer.transform.position.z);
     }
 }
