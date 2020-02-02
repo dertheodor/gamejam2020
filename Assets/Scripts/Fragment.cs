@@ -57,8 +57,6 @@ public class Fragment : MonoBehaviour
 
     public void Shatter(Vector3 direction)
     {
-        print(direction);
-        print(GetComponent<Rigidbody>().isKinematic);
         GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().AddForce(direction * 10, ForceMode.Impulse);
         isShattering = true;
@@ -67,7 +65,7 @@ public class Fragment : MonoBehaviour
 
     public void Repair()
     {
-        if(!isRepaired)
+        if(!isRepaired && !isRepairing)
         {
             GetComponent<Rigidbody>().isKinematic = true;
             isShattering = false;

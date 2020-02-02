@@ -42,11 +42,6 @@ public class Destroyable : MonoBehaviour
             destroyed.gameObject.SetActive(false);
             intact.gameObject.SetActive(true);
             isDestroyed = false;
-
-            foreach (Fragment f in GetComponentsInChildren<Fragment>())
-            {
-                f.GetComponent<Rigidbody>().isKinematic = false;
-            }
         }
     }
 
