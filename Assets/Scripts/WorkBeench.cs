@@ -23,6 +23,21 @@ public class WorkBeench : MonoBehaviour
     public SteamVR_Action_Boolean buildingAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("default", "BuildTheGunAction");
     private bool pressingTrigger;
 
+    public GameObject Clock;
+    public GameObject ClockPointer1;
+    public GameObject Clockpointer2;
+
+    public GameObject Soda;
+    public GameObject ErlenMeyer;
+    public GameObject DoorHandle;
+    public GameObject Pipe;
+    public GameObject Battery;
+    public GameObject Prism;
+    public GameObject Pot;
+    public GameObject Cable;
+    public GameObject CableConnectors;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +59,7 @@ public class WorkBeench : MonoBehaviour
     {
         pressingTrigger = buildingAction.stateDown;
 
-        if (clockWasFound && sodaWasFound && erlenmeyerWasFound && doorHandleWasFound && pipeWasFound && !alreadyBuilt && pressingTrigger)
+        if (clockWasFound && sodaWasFound && erlenmeyerWasFound && doorHandleWasFound && pipeWasFound && !alreadyBuilt && pressingTrigger) //alreadyBuilt
         {
             alreadyBuilt = true;
             Instantiate(finishedGlueGun, transform.position, finishedGlueGun.transform.rotation);
@@ -54,6 +69,10 @@ public class WorkBeench : MonoBehaviour
         {
             GameObject checkmark = Instantiate(Checkmark, Checkmark.transform);
             checkmark.transform.position += new Vector3(17.854f, 0, 1.511f);
+            Clock.SetActive(true);
+            ClockPointer1.SetActive(true);
+            ClockPointer2.SetActive(true);
+
         }
 
         if (sodaWasFound)
