@@ -57,19 +57,19 @@ public class WorkBeench : MonoBehaviour
         clockAlreadyBuilt = false;
         sodaAlreadyBuilt = false;
         sodaWasFound = false;
-        erlenmeyerWasFound = false;
+        erlenmeyerWasFound = true;
         erlenmeyerAlreadyBuilt = false;
-        doorHandleWasFound = false;
+        doorHandleWasFound = true;
         doorHandleAlreadyBuilt = false;
         pipeWasFound = false;
         pipeAlreadyBuilt = false;
-        batteryWasFound = false;
+        batteryWasFound = true;
         batteryWasBuilt = false;
-        prismWasFound = false;
+        prismWasFound = true;
         prismAlreadyBuilt = false;
-        potWasFound = false;
+        potWasFound = true;
         potAlreadyBuilt = false;
-        cableWasFound = false;
+        cableWasFound = true;
         cableAlreadyBuilt = false;
 
         alreadyBuilt = false;

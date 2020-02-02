@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Scene_Naughty_BoiPlayer.unity
+    guid: 7a566ad207e264f46a9ad0e7e8e786b8
   m_configObjects: {}
