@@ -28,7 +28,6 @@ public class WorkBeench : MonoBehaviour
     public bool cableAlreadyBuilt;
 
     public bool alreadyBuilt;
-    public GameObject finishedGlueGun;
     public SteamVR_Action_Boolean buildingAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("default", "BuildTheGunAction");
     private bool pressingTrigger;
 
@@ -45,13 +44,14 @@ public class WorkBeench : MonoBehaviour
     public GameObject Pot;
     public GameObject Cable;
     public GameObject CableConnectors;
-
+    public GameObject RepairGun;
+    public GameObject CompleteRepairGun;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        Checkmark.transform.position -= new Vector3(-Checkmark.transform.position.x, 0, -Checkmark.transform.position.z);
+        //Checkmark.transform.position -= new Vector3(-Checkmark.transform.position.x, 0, -Checkmark.transform.position.z);
 
         clockWasFound = false;
         clockAlreadyBuilt = false;
@@ -79,10 +79,12 @@ public class WorkBeench : MonoBehaviour
     {
         pressingTrigger = buildingAction.stateDown;
 
-        if (clockWasFound && sodaWasFound && erlenmeyerWasFound && doorHandleWasFound && pipeWasFound && !alreadyBuilt && pressingTrigger) //alreadyBuilt
+        if (clockWasFound && sodaWasFound && erlenmeyerWasFound && doorHandleWasFound && pipeWasFound && !alreadyBuilt) //alreadyBuilt
         {
             alreadyBuilt = true;
-            Instantiate(finishedGlueGun, transform.position, finishedGlueGun.transform.rotation);
+            Destroy(RepairGun);
+            CompleteRepairGun.SetActive(true);
+                
         }
 
         if (clockWasFound && !clockAlreadyBuilt)
